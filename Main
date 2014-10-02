@@ -10,42 +10,25 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin{
-	public final Logger logger = Logger.getLogger("Minecraft");
-	public static Main plugin;
-	
-	@Override
-	public void onEnable() {
-		PluginDescriptionFile pdffile = this.getDescription();
-		this.logger.info(pdffile.getName() + " has been Enabled!");
+public void onEnable(){
+		getLogger().info(ChatColor.GREEN + "==BuildOff==" + ChatColor.LIGHT_PURPLE + " Made by CreeperSwagg34 and Zexy(CZ coding)");
+
 	}
 	
-	@Override
-	public void onDisable() {
-		PluginDescriptionFile pdffile = this.getDescription();
-		this.logger.info(pdffile.getName() + " Version " + pdffile.getVersion() + " has been Disabled!");
-	}
+	//We will register our class files here
+	
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-	    Player player = (Player) sender;
-	    if (!sender.hasPermission("buildoff.start")){
+		
+		//We will make a main command here to list all of our other commands
+		
+		Player p = (Player) sender;
+	    if (!sender.hasPermission("buildoff.use")){
 	    	sender.sendMessage(ChatColor.RED + "You do not have permission to do this command!");
 	    	return true;
 	    }
-		if(commandLabel.equalsIgnoreCase("bo")){
-			player.sendMessage(ChatColor.RED + "Please enter a vaild command!");
-		}else if(commandLabel.equalsIgnoreCase("buildoff add")){
-			player.sendMessage(ChatColor.GREEN + "Adding your team!");
-		}else if(commandLabel.equalsIgnoreCase("buildoff start")){
-			player.sendMessage(ChatColor.GREEN + "Starting Build-Off! Please wait!");
-		}else if(commandLabel.equalsIgnoreCase("buildoff remove")){
-			player.sendMessage(ChatColor.GREEN + "Removing from your team!");
-		}else if(commandLabel.equalsIgnoreCase("buildoff timer add")){
-			player.sendMessage(ChatColor.GREEN + "Adding more time on the clock!");
-		}else if(commandLabel.equalsIgnoreCase("buildoff vote")){
-			player.sendMessage(ChatColor.GREEN + "Voted!");
-		}else if(commandLabel.equalsIgnoreCase("buildoff stop")){
-			player.sendMessage(ChatColor.GREEN + "Stopping the Build!");
-		}
 		return false;
 	}
-}	
+	
+}
+
